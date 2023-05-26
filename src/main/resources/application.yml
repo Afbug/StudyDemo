@@ -1,0 +1,38 @@
+server:
+  tomcat:
+    threads:
+      min-spare: 100
+      max: 800
+  port: 8080
+  servlet:
+   encoding:
+    force: true
+    enabled: true
+    charset: utf-8
+#serverTimezone=GMT%2B8&useUnicode=true&characterEncoding=UTF-8
+
+spring:
+ redis:
+   host: 192.168.120.100
+   port: 6379
+   database: 0
+   connect-timeout: 180000
+   lettuce:
+     pool:
+       max-active: 20
+       max-wait: 1
+       max-idle: 5
+       min-idle: 0
+ main:
+   allow-circular-references: true
+ datasource:
+  url: jdbc:mysql://localhost:3306/shixun?
+  driver-class-name: com.mysql.cj.jdbc.Driver
+  type: com.alibaba.druid.pool.DruidDataSource
+  username: root
+  password: 123688
+
+mybatis-plus:
+  mapper-locations: classpath:mapper/*.xml
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.studydemo.dao.GradeDao">
+
+    <delete id="deleteByIds">
+        delete from grades where id
+        in
+        <foreach collection="ids" item="id" separator="," open="(" close=")">
+            #{id}
+        </foreach>
+        ;
+    </delete>
+
+
+    <select id="selectGrade" resultType="com.studydemo.entity.Grades">
+        select * from grades
+        <where>
+            <if test="gradeVo.userId != null and gradeVo.userId != '' ">
+            user_id = #{gradeVo.userId}
+            </if>
+            <if test="gradeVo.courseId != null and gradeVo.courseId != '' ">
+            and course_id = #{gradeVo.courseId}
+            </if>
+            <if test="gradeVo.courseName != null and gradeVo.courseName != '' ">
+            and course_name = #{gradeVo.courseName}
+            </if>
+        </where>
+    </select>
+
+
+
+</mapper>
