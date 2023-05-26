@@ -61,4 +61,9 @@ class StudyDemoApplicationTests {
         Integer courseId = 1;
         System.out.println(courseService.getCourse(userId,courseName,courseId));
     }
+
+    @Test
+    void test4(){
+        System.out.println("hello github");
+    }
 }
